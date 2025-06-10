@@ -1,4 +1,3 @@
-# limon-cords-website
 # Limon Cords LLC - E-Commerce Website
 
 Professional-grade bungee cord e-commerce website with complete backend integration and admin panel.

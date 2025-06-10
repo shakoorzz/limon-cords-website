@@ -1,0 +1,53 @@
+{
+  "name": "limon-cords-website",
+  "version": "1.0.0",
+  "description": "Professional-grade bungee cord e-commerce website for Limon Cords LLC",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx live-server --port=3000 --open=index.html",
+    "dev": "npx live-server --port=3000 --open=index.html --watch=assets/",
+    "build": "echo 'Static website - no build process required'",
+    "deploy": "echo 'Deploy to Netlify or your preferred hosting platform'"
+  },
+  "keywords": [
+    "bungee-cords",
+    "e-commerce",
+    "professional-grade",
+    "commercial",
+    "industrial",
+    "cargo-securing"
+  ],
+  "author": "Limon Cords LLC",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/limon-cords-website.git"
+  },
+  "homepage": "https://your-domain.com",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "netlify": {
+    "build": {
+      "publish": ".",
+      "command": "echo 'Static website ready for deployment'"
+    },
+    "redirects": [
+      {
+        "from": "/admin",
+        "to": "/admin-manager-2024.html",
+        "status": 301
+      }
+    ]
+  }
+}

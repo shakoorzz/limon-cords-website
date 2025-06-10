@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limon Cords LLC - Professional-Grade Bungee Cords</title>
+    <meta name="description" content="Premium professional-grade bungee cords for commercial and industrial applications. High weight capacity, durable construction, and reliable performance.">
+    <meta name="keywords" content="bungee cords, professional grade, heavy duty, commercial, industrial, cargo securing">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="preload" href="assets/js/app.js" as="script">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- External Scripts -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">Limon Cords LLC</a>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                ☰
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <button class="cart-toggle" aria-label="Open cart">
+                        🛒 Cart <span class="cart-count hidden">0</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content container">
+            <h1>Professional-Grade Bungee Cords</h1>
+            <p>Ultra-strong, reliable bungee cords designed for commercial and industrial applications. Trusted by professionals for their superior quality and exceptional durability.</p>
+            <a href="shop.html" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose Limon Cords LLC?</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>Superior Strength</h3>
+                    <p>Our professional-grade bungee cords support up to 555 lbs, making them perfect for heavy-duty commercial applications and cargo securing.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Diamond Weave Technology</h3>
+                    <p>Advanced diamond weave construction provides enhanced shock absorption and durability for demanding professional environments.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Professional Quality</h3>
+                    <p>Manufactured to commercial standards with rigorous quality control. Each cord undergoes extensive testing to ensure reliability.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Multiple Configurations</h3>
+                    <p>Available in various colors, lengths, and strength ratings to meet diverse professional requirements and applications.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Bulk Orders Available</h3>
+                    <p>Volume pricing for commercial customers. We supply everything from single units to 1000+ foot bulk orders for large operations.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Trusted by Professionals</h3>
+                    <p>Used by transportation companies, construction crews, and industrial professionals who demand reliable performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="products">
+        <div class="container">
+            <h2>Our Product Range</h2>
+
+            <div class="product-showcase">
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://via.placeholder.com/400x300/000000/FFFFFF?text=Diamond+Weave" alt="Diamond Weave Bungee Cord">
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Diamond Weave Shock Cords</h3>
+                        <ul>
+                            <li><strong>Weight Capacity:</strong> 261 lbs</li>
+                            <li><strong>Purpose:</strong> Cargo securing and trailer applications</li>
+                            <li><strong>Features:</strong> Enhanced shock absorption</li>
+                            <li><strong>Best For:</strong> Professional transportation</li>
+                        </ul>
+                        <div class="price-highlight">
+                            <span class="current-price">$3.00</span>
+                            <span class="original-price">$5.00</span>
+                            <span class="sale-badge">40% OFF</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://via.placeholder.com/400x300/000000/FFFFFF?text=Half+Inch" alt="Half-Inch Professional Bungee Cord">
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Half-Inch Professional Cords</h3>
+                        <ul>
+                            <li><strong>Weight Capacity:</strong> 555 lbs</li>
+                            <li><strong>Purpose:</strong> Heavy-duty commercial use</li>
+                            <li><strong>Features:</strong> Maximum strength rating</li>
+                            <li><strong>Best For:</strong> Industrial applications</li>
+                        </ul>
+                        <div class="price-highlight">
+                            <span class="current-price">$3.00</span>
+                            <span class="original-price">$5.00</span>
+                            <span class="sale-badge">40% OFF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-2">
+                <a href="shop.html" class="cta-button">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <h2>Limited Time Offer - 40% Off Until End of Year!</h2>
+                <p>Professional-grade quality at unbeatable prices. Stock up now for your commercial operations.</p>
+                <div class="promo-details">
+                    <div class="promo-item">
+                        <strong>17" Professional Cords</strong><br>
+                        <span class="price">Only $3.00 each</span>
+                    </div>
+                    <div class="promo-item">
+                        <strong>Bulk Orders Available</strong><br>
+                        <span>1000+ foot quantities</span>
+                    </div>
+                    <div class="promo-item">
+                        <strong>Limited Time</strong><br>
+                        <span>Offer ends December 31st</span>
+                    </div>
+                </div>
+                <a href="shop.html" class="cta-button">Shop Sale Items</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"These professional-grade bungee cords have revolutionized our cargo securing process. The 555 lb capacity gives us confidence for heavy loads."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Mike Rodriguez</strong><br>
+                        Fleet Manager, TransCorp Logistics
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The diamond weave construction is impressive. We've been using these for trailer securing and they've never failed us, even in harsh weather."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Sarah Johnson</strong><br>
+                        Operations Director, Industrial Solutions Inc.
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Bulk ordering from Limon Cords has streamlined our procurement. Quality is consistent and the pricing for professionals is excellent."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>David Chen</strong><br>
+                        Purchasing Manager, BuildTech Construction
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Upgrade Your Securing Solutions?</h2>
+            <p>Join thousands of professionals who trust Limon Cords LLC for their critical applications.</p>
+            <div class="cta-buttons">
+                <a href="shop.html" class="cta-button">Shop Products</a>
+                <a href="contact.html" class="cta-button cta-secondary">Custom Orders</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Limon Cords LLC</h3>
+                    <p>Professional-grade bungee cords for commercial and industrial applications. Quality you can trust, strength you can depend on.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#products">Products</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <a href="shop.html">Diamond Weave Cords</a>
+                    <a href="shop.html">Half-Inch Professional</a>
+                    <a href="shop.html">Standard Cords</a>
+                    <a href="contact.html">Custom Orders</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="contact.html">Bulk Orders</a>
+                    <a href="contact.html">Technical Support</a>
+                    <a href="#specifications">Product Specs</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Limon Cords LLC. All rights reserved. Professional-grade bungee cords for commercial applications.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-content">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-total"></div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- Additional Styles for Homepage -->
+    <style>
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .showcase-item {
+            display: flex;
+            gap: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .showcase-image {
+            flex: 1;
+        }
+
+        .showcase-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .showcase-content {
+            flex: 1;
+        }
+
+        .showcase-content h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .showcase-content ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .showcase-content li {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .price-highlight {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .promo-banner {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .promo-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .promo-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .promo-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .testimonials {
+            background: #f8f9fa;
+            padding: 6rem 0;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: #666;
+        }
+
+        .testimonial-author {
+            color: #2c3e50;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #f39c12;
+        }
+
+        .cta-secondary:hover {
+            background: #f39c12;
+        }
+
+        @media (max-width: 768px) {
+            .product-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .showcase-item {
+                flex-direction: column;
+            }
+
+            .promo-details {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</body>
+</html>

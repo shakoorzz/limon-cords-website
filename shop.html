@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Professional-Grade Bungee Cords - Limon Cords LLC</title>
+    <meta name="description" content="Browse our selection of professional-grade bungee cords. Diamond weave, half-inch, and standard cords available in multiple colors and lengths.">
+    <meta name="keywords" content="buy bungee cords, professional grade, diamond weave, half inch, cargo securing">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- External Scripts -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">Limon Cords LLC</a>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                ☰
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <button class="cart-toggle" aria-label="Open cart">
+                        🛒 Cart <span class="cart-count hidden">0</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Shop Header -->
+    <section class="shop-header">
+        <div class="container">
+            <h1>Professional-Grade Bungee Cords</h1>
+            <p>High-strength, reliable bungee cords for commercial and industrial applications</p>
+
+            <!-- Promotional Banner -->
+            <div class="promo-alert">
+                <span class="promo-icon">🔥</span>
+                <strong>Limited Time: 40% OFF all professional-grade cords!</strong>
+                <span>Sale ends December 31st</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Filters -->
+    <section class="filters-section">
+        <div class="container">
+            <h2>Filter Products</h2>
+            <div class="product-filters">
+                <div class="filter-group">
+                    <label for="color-filter">Color:</label>
+                    <select id="color-filter">
+                        <option value="all">All Colors</option>
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                        <option value="purple">Purple</option>
+                        <option value="beige">Beige</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="length-filter">Length:</label>
+                    <select id="length-filter">
+                        <option value="all">All Lengths</option>
+                        <option value="12">12 inches</option>
+                        <option value="17">17 inches</option>
+                        <option value="24">24 inches</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="type-filter">Type:</label>
+                    <select id="type-filter">
+                        <option value="all">All Types</option>
+                        <option value="diamond-weave">Diamond Weave</option>
+                        <option value="standard">Standard</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <button class="filter-reset" onclick="resetFilters()">Reset Filters</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <div class="featured-badge">Best Seller</div>
+                    <img src="https://via.placeholder.com/300x200/000000/FFFFFF?text=Diamond+Weave" alt="Diamond Weave Bungee Cord">
+                    <div class="featured-content">
+                        <h3>Diamond Weave Shock Cord</h3>
+                        <p><strong>261 lbs capacity</strong> - Perfect for trailer securing</p>
+                        <div class="featured-price">
+                            <span class="current">$3.00</span>
+                            <span class="original">$5.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="featured-item">
+                    <div class="featured-badge">Highest Capacity</div>
+                    <img src="https://via.placeholder.com/300x200/000000/FFFFFF?text=Half+Inch+Pro" alt="Half-Inch Professional Bungee Cord">
+                    <div class="featured-content">
+                        <h3>Half-Inch Professional Cord</h3>
+                        <p><strong>555 lbs capacity</strong> - Maximum strength for heavy loads</p>
+                        <div class="featured-price">
+                            <span class="current">$3.00</span>
+                            <span class="original">$5.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products">
+        <div class="container">
+            <h2>All Products</h2>
+            <div class="product-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Information -->
+    <section class="product-info">
+        <div class="container">
+            <h2>Product Specifications</h2>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Diamond Weave Technology</h3>
+                    <ul>
+                        <li>Enhanced shock absorption</li>
+                        <li>Superior durability</li>
+                        <li>Professional-grade construction</li>
+                        <li>Weather-resistant materials</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Weight Capacities</h3>
+                    <ul>
+                        <li><strong>Standard Cords:</strong> 200 lbs</li>
+                        <li><strong>Diamond Weave:</strong> 261 lbs</li>
+                        <li><strong>Half-Inch Pro:</strong> 555 lbs</li>
+                        <li>All ratings tested and certified</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Available Configurations</h3>
+                    <ul>
+                        <li>Multiple length options</li>
+                        <li>Professional color choices</li>
+                        <li>Custom lengths available</li>
+                        <li>Bulk quantities in stock</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Quality Assurance</h3>
+                    <ul>
+                        <li>Rigorous testing standards</li>
+                        <li>Commercial-grade materials</li>
+                        <li>Professional certification</li>
+                        <li>Consistent quality control</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="shop-cta">
+        <div class="container">
+            <h2>Need Custom Specifications?</h2>
+            <p>We offer custom lengths, colors, and bulk orders for commercial customers.</p>
+            <a href="contact.html" class="cta-button">Request Custom Quote</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Limon Cords LLC</h3>
+                    <p>Professional-grade bungee cords for commercial and industrial applications.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <a href="shop.html">Diamond Weave</a>
+                    <a href="shop.html">Half-Inch Pro</a>
+                    <a href="shop.html">Standard Cords</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="contact.html">Bulk Orders</a>
+                    <a href="contact.html">Custom Orders</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Limon Cords LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-content">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-total"></div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- Additional Styles for Shop Page -->
+    <style>
+        .shop-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .shop-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .shop-header p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .promo-alert {
+            background: rgba(231, 76, 60, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        .promo-icon {
+            font-size: 1.2rem;
+        }
+
+        .filters-section {
+            background: white;
+            padding: 3rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .filters-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .filter-reset {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .filter-reset:hover {
+            background: #7f8c8d;
+        }
+
+        .featured-products {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+
+        .featured-products h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .featured-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .featured-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .featured-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 1.5rem;
+        }
+
+        .featured-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .featured-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .featured-price .current {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .featured-price .original {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .product-info {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .product-info h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #3498db;
+        }
+
+        .info-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card li {
+            padding: 0.3rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .info-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .shop-cta {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .shop-cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .shop-cta p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .nav-links .active {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .shop-header h1 {
+                font-size: 2rem;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promo-alert {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .product-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+
+    <script>
+        // Additional shop-specific functionality
+        function resetFilters() {
+            document.getElementById('color-filter').value = 'all';
+            document.getElementById('length-filter').value = 'all';
+            document.getElementById('type-filter').value = 'all';
+            filterProducts();
+        }
+
+        // Enhanced filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const typeFilter = document.querySelector('#type-filter');
+            if (typeFilter) {
+                typeFilter.addEventListener('change', filterProducts);
+            }
+        });
+
+        // Override the filterProducts function to include type filtering
+        function filterProducts() {
+            const colorFilter = document.querySelector('#color-filter');
+            const lengthFilter = document.querySelector('#length-filter');
+            const typeFilter = document.querySelector('#type-filter');
+            const productCards = document.querySelectorAll('.product-card');
+
+            const selectedColor = colorFilter ? colorFilter.value : 'all';
+            const selectedLength = lengthFilter ? lengthFilter.value : 'all';
+            const selectedType = typeFilter ? typeFilter.value : 'all';
+
+            productCards.forEach(card => {
+                const cardColor = card.dataset.color;
+                const cardLength = card.dataset.length;
+                const cardType = card.dataset.type;
+
+                const colorMatch = selectedColor === 'all' || cardColor === selectedColor;
+                const lengthMatch = selectedLength === 'all' || cardLength === selectedLength;
+                const typeMatch = selectedType === 'all' || cardType === selectedType;
+
+                if (colorMatch && lengthMatch && typeMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Update product images based on color selection
+            if (selectedColor !== 'all') {
+                updateProductImages(selectedColor);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Limon Cords LLC</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- External Scripts -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Login Modal -->
+    <div id="login-modal" class="login-modal">
+        <div class="login-content">
+            <h2>Admin Access</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+                <div id="login-error" class="error-message hidden"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel (Hidden by default) -->
+    <div id="admin-panel" class="hidden">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="container">
+                <h1>🔐 Limon Cords LLC - Admin Panel</h1>
+                <p>Inventory Management & Order Processing</p>
+                <button id="logout-btn" class="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <!-- Admin Content -->
+        <main class="admin-container">
+            <!-- Dashboard Stats -->
+            <section class="dashboard-stats">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="total-products">12</div>
+                        <div class="stat-label">Products</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="pending-orders">3</div>
+                        <div class="stat-label">Pending Orders</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="contact-requests">7</div>
+                        <div class="stat-label">Contact Requests</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="total-revenue">$1,245</div>
+                        <div class="stat-label">Revenue (Month)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Grid -->
+            <div class="admin-grid">
+                <!-- Product Management -->
+                <div class="admin-card">
+                    <h3>🛍️ Product Inventory</h3>
+                    <div class="product-management">
+                        <div class="product-toggle">
+                            <span><strong>Diamond Weave (Black, 17")</strong><br>261 lbs capacity - $3.00</span>
+                            <div class="toggle-switch active" data-product="diamond-weave-black-17"></div>
+                        </div>
+
+                        <div class="product-toggle">
+                            <span><strong>Half-Inch Pro (Black, 17")</strong><br>555 lbs capacity - $3.00</span>
+                            <div class="toggle-switch active" data-product="half-inch-black-17"></div>
+                        </div>
+
+                        <div class="product-toggle">
+                            <span><strong>Standard (White, 17")</strong><br>200 lbs capacity - $2.50</span>
+                            <div class="toggle-switch active" data-product="standard-white-17"></div>
+                        </div>
+
+                        <div class="product-toggle">
+                            <span><strong>Standard (Purple, 17")</strong><br>200 lbs capacity - $2.50</span>
+                            <div class="toggle-switch active" data-product="standard-purple-17"></div>
+                        </div>
+
+                        <div class="product-toggle">
+                            <span><strong>Standard (Beige, 17")</strong><br>200 lbs capacity - $2.50</span>
+                            <div class="toggle-switch active" data-product="standard-beige-17"></div>
+                        </div>
+
+                        <div class="product-toggle">
+                            <span><strong>Standard (White, 12")</strong><br>200 lbs capacity - $2.00</span>
+                            <div class="toggle-switch" data-product="standard-white-12"></div>
+                        </div>
+
+                        <div class="product-toggle">
+                            <span><strong>Standard (Purple, 12")</strong><br>200 lbs capacity - $2.00</span>
+                            <div class="toggle-switch" data-product="standard-purple-12"></div>
+                        </div>
+
+                        <div class="product-toggle">
+                            <span><strong>Standard (Beige, 12")</strong><br>200 lbs capacity - $2.00</span>
+                            <div class="toggle-switch" data-product="standard-beige-12"></div>
+                        </div>
+                    </div>
+
+                    <button class="update-btn" onclick="updateInventory()">Update Inventory</button>
+                </div>
+
+                <!-- Pricing Management -->
+                <div class="admin-card">
+                    <h3>💰 Pricing Control</h3>
+                    <div class="pricing-management">
+                        <div class="price-item">
+                            <label>Diamond Weave (17"):</label>
+                            <div class="price-controls">
+                                <input type="number" id="price-diamond-17" value="3.00" step="0.01" min="0">
+                                <span class="original-price">Original: $5.00</span>
+                            </div>
+                        </div>
+
+                        <div class="price-item">
+                            <label>Half-Inch Pro (17"):</label>
+                            <div class="price-controls">
+                                <input type="number" id="price-half-inch-17" value="3.00" step="0.01" min="0">
+                                <span class="original-price">Original: $5.00</span>
+                            </div>
+                        </div>
+
+                        <div class="price-item">
+                            <label>Standard Cords (17"):</label>
+                            <div class="price-controls">
+                                <input type="number" id="price-standard-17" value="2.50" step="0.01" min="0">
+                                <span class="original-price">Original: $4.00</span>
+                            </div>
+                        </div>
+
+                        <div class="price-item">
+                            <label>Standard Cords (12"):</label>
+                            <div class="price-controls">
+                                <input type="number" id="price-standard-12" value="2.00" step="0.01" min="0">
+                                <span class="original-price">Original: $3.50</span>
+                            </div>
+                        </div>
+
+                        <div class="sale-banner">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="sale-active" checked>
+                                <span class="checkmark"></span>
+                                40% Off Sale Active (Until Dec 31st)
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="update-btn" onclick="updatePricing()">Update Pricing</button>
+                </div>
+
+                <!-- Orders Management -->
+                <div class="admin-card">
+                    <h3>📋 Recent Orders</h3>
+                    <div class="orders-list">
+                        <div class="order-item">
+                            <div class="order-info">
+                                <strong>Order #1001</strong>
+                                <span class="order-date">Dec 15, 2024</span>
+                            </div>
+                            <div class="order-details">
+                                <div>Diamond Weave (Black, 17") x5</div>
+                                <div class="order-total">$15.00</div>
+                            </div>
+                            <div class="order-status pending">Pending</div>
+                        </div>
+
+                        <div class="order-item">
+                            <div class="order-info">
+                                <strong>Order #1002</strong>
+                                <span class="order-date">Dec 14, 2024</span>
+                            </div>
+                            <div class="order-details">
+                                <div>Half-Inch Pro (Black, 17") x10</div>
+                                <div class="order-total">$30.00</div>
+                            </div>
+                            <div class="order-status completed">Completed</div>
+                        </div>
+
+                        <div class="order-item">
+                            <div class="order-info">
+                                <strong>Order #1003</strong>
+                                <span class="order-date">Dec 13, 2024</span>
+                            </div>
+                            <div class="order-details">
+                                <div>Standard Mix x20</div>
+                                <div class="order-total">$50.00</div>
+                            </div>
+                            <div class="order-status shipped">Shipped</div>
+                        </div>
+                    </div>
+
+                    <button class="view-all-btn" onclick="loadAllOrders()">View All Orders</button>
+                </div>
+
+                <!-- Contact Requests -->
+                <div class="admin-card">
+                    <h3>📧 Contact Requests</h3>
+                    <div class="contacts-list">
+                        <div class="contact-item">
+                            <div class="contact-info">
+                                <strong>Mike Rodriguez - TransCorp Logistics</strong>
+                                <span class="contact-date">Dec 15, 2024</span>
+                            </div>
+                            <div class="contact-type">Bulk Order - 1000ft Diamond Weave</div>
+                            <div class="contact-actions">
+                                <button class="action-btn respond">Respond</button>
+                                <button class="action-btn mark-read">Mark Read</button>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-info">
+                                <strong>Sarah Johnson - Industrial Solutions</strong>
+                                <span class="contact-date">Dec 14, 2024</span>
+                            </div>
+                            <div class="contact-type">Custom Length - 36" Professional Grade</div>
+                            <div class="contact-actions">
+                                <button class="action-btn respond">Respond</button>
+                                <button class="action-btn mark-read">Mark Read</button>
+                            </div>
+                        </div>
+
+                        <div class="contact-item read">
+                            <div class="contact-info">
+                                <strong>David Chen - BuildTech Construction</strong>
+                                <span class="contact-date">Dec 13, 2024</span>
+                            </div>
+                            <div class="contact-type">Industrial Solution Consultation</div>
+                            <div class="contact-actions">
+                                <button class="action-btn view">View</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="view-all-btn" onclick="loadAllContacts()">View All Contacts</button>
+                </div>
+
+                <!-- Website Analytics -->
+                <div class="admin-card">
+                    <h3>📊 Website Analytics</h3>
+                    <div class="analytics-data">
+                        <div class="metric">
+                            <label>Page Views (Today):</label>
+                            <span class="metric-value">247</span>
+                        </div>
+
+                        <div class="metric">
+                            <label>Unique Visitors (Today):</label>
+                            <span class="metric-value">89</span>
+                        </div>
+
+                        <div class="metric">
+                            <label>Cart Additions (Today):</label>
+                            <span class="metric-value">15</span>
+                        </div>
+
+                        <div class="metric">
+                            <label>Conversion Rate:</label>
+                            <span class="metric-value">6.7%</span>
+                        </div>
+
+                        <div class="metric">
+                            <label>Top Product:</label>
+                            <span class="metric-value">Diamond Weave Black 17"</span>
+                        </div>
+
+                        <div class="metric">
+                            <label>Top Traffic Source:</label>
+                            <span class="metric-value">Direct (45%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Settings -->
+                <div class="admin-card">
+                    <h3>⚙️ System Settings</h3>
+                    <div class="system-settings">
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="maintenance-mode">
+                                <span class="checkmark"></span>
+                                Maintenance Mode
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="email-notifications" checked>
+                                <span class="checkmark"></span>
+                                Email Notifications
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="auto-inventory" checked>
+                                <span class="checkmark"></span>
+                                Auto Inventory Updates
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <label>Session Timeout (minutes):</label>
+                            <input type="number" id="session-timeout" value="30" min="5" max="120">
+                        </div>
+                    </div>
+
+                    <button class="update-btn" onclick="updateSettings()">Save Settings</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Admin JavaScript -->
+    <script>
+        // Admin panel configuration
+        const ADMIN_PASSWORD = 'bungee2024admin';
+        const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 minutes
+        let sessionTimer;
+
+        // Initialize admin panel
+        document.addEventListener('DOMContentLoaded', function() {
+            checkSession();
+            setupEventListeners();
+        });
+
+        // Setup event listeners
+        function setupEventListeners() {
+            document.getElementById('login-form').addEventListener('submit', handleLogin);
+            document.getElementById('logout-btn').addEventListener('click', handleLogout);
+
+            // Product toggle switches
+            document.querySelectorAll('.toggle-switch').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+        }
+
+        // Handle login
+        function handleLogin(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            const errorElement = document.getElementById('login-error');
+
+            if (password === ADMIN_PASSWORD) {
+                // Set session
+                const sessionData = {
+                    loggedIn: true,
+                    loginTime: Date.now()
+                };
+                localStorage.setItem('adminSession', JSON.stringify(sessionData));
+
+                // Show admin panel
+                document.getElementById('login-modal').style.display = 'none';
+                document.getElementById('admin-panel').classList.remove('hidden');
+
+                // Start session timer
+                startSessionTimer();
+
+                // Load initial data
+                loadDashboardData();
+
+            } else {
+                errorElement.textContent = 'Invalid password';
+                errorElement.classList.remove('hidden');
+
+                // Clear password field
+                document.getElementById('password').value = '';
+            }
+        }
+
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('adminSession');
+            clearTimeout(sessionTimer);
+
+            document.getElementById('admin-panel').classList.add('hidden');
+            document.getElementById('login-modal').style.display = 'flex';
+            document.getElementById('password').value = '';
+            document.getElementById('login-error').classList.add('hidden');
+        }
+
+        // Check existing session
+        function checkSession() {
+            const sessionData = JSON.parse(localStorage.getItem('adminSession') || '{}');
+
+            if (sessionData.loggedIn) {
+                const timeSinceLogin = Date.now() - sessionData.loginTime;
+
+                if (timeSinceLogin < SESSION_TIMEOUT) {
+                    // Valid session
+                    document.getElementById('login-modal').style.display = 'none';
+                    document.getElementById('admin-panel').classList.remove('hidden');
+                    startSessionTimer();
+                    loadDashboardData();
+                } else {
+                    // Session expired
+                    localStorage.removeItem('adminSession');
+                    showLoginModal();
+                }
+            } else {
+                showLoginModal();
+            }
+        }
+
+        // Show login modal
+        function showLoginModal() {
+            document.getElementById('login-modal').style.display = 'flex';
+            document.getElementById('admin-panel').classList.add('hidden');
+        }
+
+        // Start session timer
+        function startSessionTimer() {
+            clearTimeout(sessionTimer);
+            sessionTimer = setTimeout(() => {
+                alert('Session expired. Please log in again.');
+                handleLogout();
+            }, SESSION_TIMEOUT);
+        }
+
+        // Load dashboard data
+        function loadDashboardData() {
+            // Simulate loading data
+            updateDashboardStats();
+            loadRecentActivity();
+        }
+
+        // Update dashboard statistics
+        function updateDashboardStats() {
+            // These would normally come from Supabase
+            const stats = {
+                totalProducts: 12,
+                pendingOrders: 3,
+                contactRequests: 7,
+                totalRevenue: 1245
+            };
+
+            document.getElementById('total-products').textContent = stats.totalProducts;
+            document.getElementById('pending-orders').textContent = stats.pendingOrders;
+            document.getElementById('contact-requests').textContent = stats.contactRequests;
+            document.getElementById('total-revenue').textContent = '$' + stats.totalRevenue.toLocaleString();
+        }
+
+        // Load recent activity
+        function loadRecentActivity() {
+            // This would normally load from Supabase
+            console.log('Loading recent activity...');
+        }
+
+        // Update inventory
+        function updateInventory() {
+            const toggles = document.querySelectorAll('.toggle-switch');
+            const inventoryUpdates = {};
+
+            toggles.forEach(toggle => {
+                const productId = toggle.dataset.product;
+                const isActive = toggle.classList.contains('active');
+                inventoryUpdates[productId] = isActive;
+            });
+
+            // Save to Supabase (if available)
+            if (window.supabase) {
+                // Update inventory in database
+                console.log('Updating inventory:', inventoryUpdates);
+            } else {
+                // Save to localStorage as fallback
+                localStorage.setItem('inventorySettings', JSON.stringify(inventoryUpdates));
+            }
+
+            showNotification('Inventory updated successfully!', 'success');
+        }
+
+        // Update pricing
+        function updatePricing() {
+            const priceUpdates = {
+                'diamond-17': document.getElementById('price-diamond-17').value,
+                'half-inch-17': document.getElementById('price-half-inch-17').value,
+                'standard-17': document.getElementById('price-standard-17').value,
+                'standard-12': document.getElementById('price-standard-12').value,
+                'sale-active': document.getElementById('sale-active').checked
+            };
+
+            // Save to Supabase (if available)
+            if (window.supabase) {
+                console.log('Updating pricing:', priceUpdates);
+            } else {
+                localStorage.setItem('pricingSettings', JSON.stringify(priceUpdates));
+            }
+
+            showNotification('Pricing updated successfully!', 'success');
+        }
+
+        // Update system settings
+        function updateSettings() {
+            const settings = {
+                maintenanceMode: document.getElementById('maintenance-mode').checked,
+                emailNotifications: document.getElementById('email-notifications').checked,
+                autoInventory: document.getElementById('auto-inventory').checked,
+                sessionTimeout: document.getElementById('session-timeout').value
+            };
+
+            localStorage.setItem('systemSettings', JSON.stringify(settings));
+            showNotification('Settings saved successfully!', 'success');
+        }
+
+        // Load all orders
+        function loadAllOrders() {
+            // This would open a detailed orders view
+            alert('Loading detailed orders view...');
+        }
+
+        // Load all contacts
+        function loadAllContacts() {
+            // This would open a detailed contacts view
+            alert('Loading detailed contacts view...');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `admin-notification ${type}`;
+            notification.textContent = message;
+
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#3498db'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideInRight 0.3s ease;
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Extend session on activity
+        document.addEventListener('click', () => {
+            const sessionData = JSON.parse(localStorage.getItem('adminSession') || '{}');
+            if (sessionData.loggedIn) {
+                sessionData.loginTime = Date.now();
+                localStorage.setItem('adminSession', JSON.stringify(sessionData));
+                startSessionTimer();
+            }
+        });
+    </script>
+
+    <!-- Admin Styles -->
+    <style>
+        .login-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .login-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            width: 400px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .login-content h2 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            float: right;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+
+        .dashboard-stats {
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-stats h2 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .update-btn,
+        .view-all-btn {
+            width: 100%;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .update-btn:hover,
+        .view-all-btn:hover {
+            background: #2980b9;
+        }
+
+        .product-management {
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-management {
+            margin-bottom: 1.5rem;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .price-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .price-controls input {
+            width: 80px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .original-price {
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        .sale-banner {
+            background: #e74c3c;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .orders-list,
+        .contacts-list {
+            margin-bottom: 1.5rem;
+        }
+
+        .order-item,
+        .contact-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #3498db;
+        }
+
+        .contact-item.read {
+            opacity: 0.7;
+            border-left-color: #95a5a6;
+        }
+
+        .order-info,
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-date,
+        .contact-date {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .order-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-total {
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .order-status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .order-status.pending {
+            background: #f39c12;
+            color: white;
+        }
+
+        .order-status.completed {
+            background: #27ae60;
+            color: white;
+        }
+
+        .order-status.shipped {
+            background: #3498db;
+            color: white;
+        }
+
+        .contact-type {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .action-btn.respond {
+            background: #3498db;
+        }
+
+        .action-btn.mark-read {
+            background: #27ae60;
+        }
+
+        .action-btn.view {
+            background: #95a5a6;
+        }
+
+        .analytics-data {
+            margin-bottom: 1.5rem;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric-value {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .system-settings {
+            margin-bottom: 1.5rem;
+        }
+
+        .setting-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .setting-item input[type="number"] {
+            width: 80px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-left: 1rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .login-content {
+                padding: 2rem;
+            }
+
+            .price-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .order-info,
+            .contact-info {
+                flex-direction: column;
+            }
+
+            .contact-actions {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</body>
+</html>

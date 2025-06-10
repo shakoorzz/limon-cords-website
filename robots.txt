@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin-manager-2024.html
+Disallow: /admin/
+
+Sitemap: https://your-domain.com/sitemap.xml
